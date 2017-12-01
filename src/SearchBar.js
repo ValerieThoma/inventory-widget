@@ -1,29 +1,32 @@
 import React, {Component} from 'react';
+import $ from 'jquery';
 
 
 
 class SearchBar extends Component {
-	searchHandler(event){
-		event.preventDefault();
-		var value = document.getElementById('searchTerm').value
-		console.log(value);
+	constructor(){
+		super();
+		this.handleChange = this.handleChange.bind(this);
+		this.checkCheck = this.checkCheck.bind(this);
+	}
 
-	} 
+	handleChange(event){
+		this.props.onChange(event.target.value);
+	}
+	checkCheck(event){
+		this.props.onCheck($('#checkbox').prop('checked'));
+	}
 
 	render(){
+		// const searchTerm = this.props.searchTerm;
+
 		return(
-			<div>
-	            <form onSubmit={this.searchHandler}>
-	            <input id="searchTerm" type="text" placeholder=" Search..." />
-	            <button className="btn btn-warning">Search</button>
-	            </form>
-	            <div className="form-check">
-	                <label className="form-check-label">
-	                <input id="instock" className="form-check-input" type="checkbox" value="" />
-	                      <span className="filter"> Only show products in stock</span>
-	                </label>
-	            </div>
-          	</div>
+			<form className="search-bar">
+				<input onChange={this.handleChange} id="searchTerm" type="text" placeholder="Search..." />
+				<div>
+					<input id="checkbox" onChange={this.checkCheck} type="checkbox" />Only show products in stock.
+				</div>
+			</form>
 		)
 	}
 }

@@ -14,10 +14,10 @@ class TemperatureInput extends Component{
 		this.props.onChange(event.target.value);
 	}
 	render(){
-		const temperature = this.state.temperature;
+		const temperature = this.props.temperature;
 		const scale = this.props.scale;
 		return(
-			<div>
+			<div className="input">
 				<legend>{this.props.scale}</legend>
 				<input value={temperature} onChange={this.handleChange}/>
 			</div>	

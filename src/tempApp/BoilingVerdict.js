@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function BoilingVerdict(props){
-	if(props.celcius >= 100){
+	if(props.temperature >= 100){
 		return(
 			<p>The water would boil</p>
 		)
